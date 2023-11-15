@@ -1,0 +1,48 @@
+<ion-header [translucent]="true">
+  <ion-toolbar class="app-header-toolbar" color="primary">
+    <img src="assets/app-icon.png" class="app-logo" slot="start"/>
+    <ion-title>
+      Where is the thing?
+    </ion-title>
+    <ion-buttons slot="end">
+      <ion-button class="app-header-button" color="light" [disabled]="isAddDisabled()" (click)="addHandler(true)">
+        Add container
+      </ion-button>
+      <ion-button *ngIf="selectedItemId" class="app-header-button" color="light" [disabled]="isAddDisabled()" (click)="addHandler(false)">
+        Add thing
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-item class="app-breadcrums">
+  <ion-label *ngIf="!selectedItemId" class="app-breadcrums-subtitle">
+    Manage Your things like God
+  </ion-label>
+  <ion-buttons *ngIf="selectedItemId">
+    <ion-button class="app-back-button" (click)="backHandler()">
+      <ion-icon name="chevron-back-outline"></ion-icon>
+    </ion-button>
+    <ion-button (click)="breadcrumbHandler(selectedItems.length-1)">
+      <ion-icon size="small" name="home-outline"></ion-icon>
+    </ion-button>
+    <div *ngFor="let item of selectedItems; index as i" class="app-breadcrum-button">
+      <ion-button class="{{i === selectedItems.length - 1 ? 'app-last-ion-button' : ''}}" (click)="breadcrumbHandler(i)" [disabled]="i === selectedItems.length - 1">
+        <span>
+          {{item.name}}
+        </span>
+        <span class="app-breadcrum-note">
+          {{item.volume}} cm<sup>3</sup>
+        </span>
+      </ion-button>
+    </div>
+  </ion-buttons>
+  <ion-note *ngIf="selectedItemId" class="app-volume-left" slot="end" [color]="this.freeVolumeWithContainers > 0 ? '' : 'danger'">
+    left volume: {{selectedItemId && this.freeVolumeWithContainers}}
+  </ion-note>
+</ion-item>
+
+
+<ion-content [fullscreen]="true">
+  <app-items-view [items]="items" (select)="selectHandler($event)" (remove)="removeHandler($event)" (edit)="editHandler($event)"/>
+</ion-content>

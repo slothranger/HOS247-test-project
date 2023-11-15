@@ -1,0 +1,41 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title>{{ !!item ? 'Edit' : 'Add' }} {{ isContainer ? 'container' : 'thing' }}</ion-title>
+  </ion-toolbar>
+</ion-header>
+<ion-content class="ion-padding">
+  <form [formGroup]="form" class="app-edit-form">
+    <ion-item>
+      <ion-input type="text" label-placement="floating" label="Name" clearInput required formControlName="name">
+      </ion-input>
+    </ion-item>
+    <div class="app-error-container">
+      <ng-container *ngFor="let validation of validations.name">
+        <div class="app-error-message" *ngIf="form.get('name')?.hasError(validation.type) && (form.get('name')?.dirty || form.get('name')?.touched)">
+          <span>{{ validation.message }}</span>
+        </div>
+      </ng-container>
+    </div>
+    <ion-item>
+      <ion-input type="number" inputmode="decimal" label-placement="floating" label="Volume" clearInput required formControlName="volume"></ion-input>
+    </ion-item>
+    <div class="app-error-container">
+      <ng-container *ngFor="let validation of validations.volume">
+        <div class="app-error-message" *ngIf="form.get('volume')?.hasError(validation.type) && (form.get('volume')?.dirty || form.get('volume')?.touched)">
+          <span>{{ validation.message }}</span>
+        </div>
+      </ng-container>
+    </div>
+    <ion-buttons class="app-edit-form-buttons">
+      <ion-button class="app-edit-form-button" fill="solid" color="light" (click)="onCancel()">
+        Cancel
+      </ion-button>
+      <ion-button class="app-edit-form-button" color="primary" fill="solid" (click)="onSubmit()" [disabled]="!this.form.valid">
+        {{!!item ? 'Update' : 'Add'}}
+      </ion-button>
+    </ion-buttons>
+  </form>
+</ion-content>

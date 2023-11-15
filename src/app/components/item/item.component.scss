@@ -1,0 +1,52 @@
+.app-item {
+  display: flex;
+  &.app-item-container {
+    &:hover {
+      background-color: #fafafa;
+    }
+    cursor: pointer;
+  }
+  .app-item-unit {
+    font-size: 14px;
+    color: #999;
+  }
+  .app-thing-volume {
+    padding-right: 70px;
+  }
+  .app-item-spacer {
+    width: 50px;
+  }
+  .app-item-icon {
+    padding-right: 10px;
+    padding-left: 16px;
+    color: #00aeff;
+  }
+  .app-item-name {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+  .app-item-message {
+    font-size: 14px;
+    padding-top: 24px;
+    color: #f18400;
+  }
+}
+.app-ion-item {
+  flex: 1;
+  &::part(native) {
+    background-color: transparent;
+    padding-left: 0;
+  }
+}
+
+.app-ion-buttons::part(native) {
+  padding-left: 0;
+  background-color: transparent;
+  height: 100%;
+}
+
+ion-note.app-note {
+  font-size: 16px;
+  line-height: 10px;
+}

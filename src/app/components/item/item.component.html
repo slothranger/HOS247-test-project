@@ -1,0 +1,41 @@
+<div *ngIf="item" class="app-item {{item.isContainer ? 'app-item-container' : ''}}">
+  <ion-item class="app-ion-item" [detail]="false" (click)="clickHandler(item)">
+    <ion-icon *ngIf="item.isContainer" name="cube" class="app-item-icon"></ion-icon>
+    <div *ngIf="!item.isContainer" class="app-item-spacer"></div>
+    <ion-label class="ion-text-wrap">
+      <div class="app-item-name">
+        {{ item.name }}
+      </div>
+      <div class="app-item-unit">
+        <span *ngIf="item.isContainer">
+          {{ freeVolume }}
+          <span>
+            cm<sup>3</sup>
+          </span>
+          &nbsp;of&nbsp;
+          <span *ngIf="item.isContainer">
+            {{ item.volume }}
+            <span class="app-item-unit">
+              cm<sup>3</sup>
+            </span>
+            &nbsp;is free
+          </span>
+        </span>
+        <span *ngIf="!item.isContainer" class="app-thing-volume">
+          <span>{{ item.volume }}</span>
+          <span class="app-item-unit">
+            cm<sup>3</sup>
+          </span>
+        </span>
+      </div>
+    </ion-label>
+    <ion-note *ngIf="item.isContainer && !freeVolume" slot="end" class="app-item-message">
+      out of space
+    </ion-note>
+    <ion-icon slot="end" aria-hidden="true" name="chevron-forward" size="small" *ngIf="item.isContainer"></ion-icon>
+  </ion-item>
+  <ion-item class="app-ion-buttons">
+    <ion-button (click)="editHandler(item)" fill="clear"><ion-icon slot="icon-only" name="create-outline"></ion-icon></ion-button>
+    <ion-button expand="block" (click)="removeHandler(item)" fill="clear" color="danger"><ion-icon slot="icon-only" name="close-circle-outline"></ion-icon></ion-button>
+  </ion-item>
+</div>

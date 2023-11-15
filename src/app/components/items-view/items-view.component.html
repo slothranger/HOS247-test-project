@@ -1,0 +1,6 @@
+<div *ngIf="!items || !items.length" class="app-empty-list">
+  List is empty
+</div>
+<ion-list>
+  <app-item *ngFor="let item of items" [item]="item" (select)="selectHandler($event)" (remove)="removeHandler($event)" (edit)="editHandler($event)"></app-item>
+</ion-list>

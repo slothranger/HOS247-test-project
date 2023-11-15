@@ -1,0 +1,11 @@
+<ion-header>
+  <ion-toolbar color="danger">
+    <ion-title class="app-confirm-title">Are you shure to remove "{{name}}" {{type}}?</ion-title>
+  </ion-toolbar>
+</ion-header>
+<ion-content class="ion-padding">
+  <ion-buttons class="app-confirm-buttons">
+    <ion-button color="medium" (click)="cancel()">Cancel</ion-button>
+    <ion-button color="danger" (click)="confirm()">Confirm</ion-button>
+  </ion-buttons>
+</ion-content>

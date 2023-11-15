@@ -1,0 +1,65 @@
+.app-breadcrum-button {
+  display: flex;
+  align-items: center;
+  font-weight: bold;
+  ::part(native) {
+    padding-top: 6px;
+  }
+  &::after {
+    content: '/';
+    padding: 3px 4px 0;
+    color: #999;
+  }
+  &:last-child {
+    &::after {
+      content: '';
+    }
+    .app-last-ion-button {
+      opacity: 1;
+    }
+  }
+  
+  .app-breadcrum-note {
+    text-transform: none;
+    font-weight: normal;
+    color: #999;
+    font-size: 12px;
+    padding-bottom: 10px;
+    padding-left: 2px;
+  }
+}
+
+.app-volume-left {
+  font-size: 14px;
+  color: #999;
+}
+
+.app-logo {
+  width: 32px;
+  margin-left: 20px;
+  -webkit-filter: drop-shadow(0px 0px 20px #fff);
+  filter: drop-shadow(0px 0px 20px #fff);
+}
+
+.app-header-toolbar {
+  padding-right: 16px;
+  .app-header-button {
+    height: 56px;
+  }
+}
+
+.app-breadcrums::part(native) {
+  background-color: #f9f9f9;
+  padding-left: 0;
+}
+
+.app-back-button {
+  margin-right: 20px;
+  margin-left: 12px;
+}
+
+.app-breadcrums-subtitle {
+  padding-left: 16px;
+  color: #999;
+  text-align: center;
+}
