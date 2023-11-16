@@ -17,6 +17,7 @@ Project was created and tested using following dependencies:
 - NPM v10.2.3
 - Angular v16.0.0
 - Ionic v7.0.0
+- Ionic/cli v7.1.5
 
 
 ### Steps to run
