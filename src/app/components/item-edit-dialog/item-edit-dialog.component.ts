@@ -20,7 +20,7 @@ export class ItemEditDialog implements OnInit {
     volume: [
       { type: 'required', message: '(required)' },
       { type: 'min', message: '' },
-      { type: 'max', message: '(volume is to much)' },
+      { type: 'max', message: '(volume is too much)' },
     ]
   }
 
