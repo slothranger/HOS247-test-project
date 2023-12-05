@@ -65,7 +65,7 @@ export class RestApi {
     if (!items) {
       return null;
     }
-    let data: Item | null = items.filter(item => item.id === id)[0];
+    let data: Item | null = items.find(item => item.id === id) || null;
     if (!data) {
       const children:any = items.filter(item => !!item.items).map((item) => item.items).flat();
       data = this.findItem(id, children);
@@ -102,7 +102,7 @@ export class RestApi {
   }
   
   private removeItemById = (id: string) => {
-    const item = this.mockData.filter(item => item.id === id)[0];
+    const item = this.mockData.find(item => item.id === id);
     if (item) {
       this.mockData = this.mockData.filter(item => item.id !== id);
     } else {

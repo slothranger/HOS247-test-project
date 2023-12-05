@@ -1,4 +1,4 @@
-### Test application for HOS247
+### Test application
 
 What was done:
 
